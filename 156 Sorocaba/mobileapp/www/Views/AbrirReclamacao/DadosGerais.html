@@ -1,0 +1,56 @@
+﻿<div class="row">
+    <ol class="breadcrumb">
+        <li class="on"><a href="" title="Dados do Requerente" class="lnk"><i>1</i> - <em>Dados do Requerente</em></a></li>
+        <li class="on"><a href="" title="Dados da Solicitação" class="lnk"><i>2</i> - <em>Dados da Solicitação</em></a></li>
+        <li><a href="" title="Dados da Localização" class="lnk"><i>3</i> - <em>Dados da Localização</em></a></li>
+        <li><a href="" title="Revisão" class="lnk"><i>4</i> - <em>Revisão</em></a></li>
+    </ol>
+
+    <div class="small-12 large-12 columns">
+        <div class="wrp">
+            <p class="cabecalhoSolicitacao">ATENÇÃO: O cadastro do requerente será mantido em sigilo pela Central 156. Mas o texto digitado nos "Dados da Solicitação" será enviado na íntegra às Secretarias, ou seja, em caso de denúncia cuidado para não se identificar.</p>
+            <div style="height: 2px; width: 100%; border-bottom: solid 2px #666;"></div>
+            <form data-abide ng-validabide="prosseguir()" id="dadosGeraisSolicForm">
+                <div class="small-12 large-7 large-offset-2 columns" style="padding-top: 30px;">
+                    <div class="row" style="padding-bottom: 15px;">
+                        <div class="small-12 large-4 columns"><label class="left ">Grupo de Serviços:</label></div>
+                        <div class="small-12 large-8 columns">
+                            <label class="left " ng-bind="Solicitacao.GrupoServico.name">---</label>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 15px;">
+                        <div class="small-12 large-4 columns">
+                            <label class="left ">Tipo de Serviços:</label>
+                        </div>
+                        <div class="small-12 large-8 columns">
+                            <label class="left " ng-bind="Solicitacao.TipoServico.name">---</label>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 15px;">
+                        <div class="small-12 large-4 columns">
+                            <label class="left ">Assuntos:</label>
+                        </div>
+                        <div class="small-12 large-8 columns">
+                            <label class="left " ng-bind="Solicitacao.Assunto.name">---</label>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 15px;">
+                        <div class="small-12 large-4 columns">
+                            <label class="left "><b>Descrição Detalhada:</b><span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-12 large-8 columns">
+                            <textarea placeholder="" style="height: 150px;" required="required" ng-model="DescricaoDetalhada"></textarea>
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+
+                    </div>
+                    <br />
+                    <input type="submit" class="button small right secondary" value="Prosseguir" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    asjdahsdjk
+</div>

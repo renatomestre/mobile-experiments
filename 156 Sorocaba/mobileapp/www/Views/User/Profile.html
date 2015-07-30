@@ -1,0 +1,182 @@
+﻿<h5 style="font-weight: bold;">Dados do Usuário</h5>
+<div style="background-color: #ffffff; position: relative;float: left;width: 100%;">
+    <div class="small-12 large-12 columns" style="background-color: #ffffff; padding-top: 30px; height: 100%; min-height: 300px;">
+        <form id="dadosGeraisUsuarioForm" data-abide ng-validabide="salvarDadosGerais()">
+            <tabset class="profileTab">
+                <tab heading="Dados Gerais">
+
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">Nome:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-12 large-7 end columns">
+                            <input type="text" ng-model="Profile.Nome" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">Sobrenome:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-12 large-7 end columns">
+                            <input type="text" ng-model="Profile.Sobrenome" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">Email:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-12 large-7 end columns">
+                            <input type="text" ng-model="Profile.Email" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">CPF:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-8 large-3 end columns">
+                            <input type="text" readonly="readonly" ng-model="Profile.CPF" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">Telefone Residencial:</label>
+                        </div>
+                        <div class="small-8 large-3 end columns">
+                            <phonenumber-directive model='Profile.Telefone.Residencial'></phonenumber-directive>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">Telefone Comercial:</label>
+                        </div>
+                        <div class="small-8 large-3 end columns">
+                            <phonenumber-directive model='Profile.Telefone.Comercial'></phonenumber-directive>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-3 large-offset-1 columns">
+                            <label class="">Celular:</label>
+                        </div>
+                        <div class="small-8 large-3 end columns">
+                            <phonenumber-directive model='Profile.Telefone.Celular'></phonenumber-directive>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="button small right secondary" style="margin-right:60px;">Salvar </button>
+                    <div style="clear:both;"></div>
+
+                </tab>
+                <tab heading="Endereços">
+                    <h5 class="left" style="font-size: 0.9rem; font-weight:bold;">Meu catálogo de endereços</h5>
+                    <button type="submit" class="button small right secondary" data-reveal-id="enderecoModal" ng-click="showEnderecoModel()">Incluir Endereço</button>
+                    <div style="clear: both;"></div>
+                    <div class="">
+                        <ul class="endereco">
+                            <li ng-repeat="x in Enderecos">
+                                <p>
+                                    <b>{{ x.nomeTipoEndereco }}</b><br />
+                                    {{ x.street }}, {{ x.number }} / {{ x.additionalInformation }}<br />
+                                    {{ x.district }}<br />
+                                    {{ x.city }} - {{ x.state }}<br />
+                                    CEP: {{ x.postalCode }}<br />
+                                    <a href="">x Excluir</a> <a href="" style="margin-left:15px;" ng-click="showEnderecoModel(x)" data-reveal-id="enderecoModal">> Editar</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="clear:both;"></div>
+                </tab>
+            </tabset>
+        </form>
+    </div>
+</div>
+<div style="clear: both;"></div>
+<div id="enderecoModal" class="reveal-modal signup-panel medium" data-reveal=data-reveal>
+    <a class="close-reveal-modal" style="font-size: 1.5rem;">&#215;</a>
+    <h4>Endereço <small ng-bind="NomeTipoEndereco">Correspondência</small></h4>
+    <div class="panel">
+        <form id="enderecoForm" data-abide=data-abide ng-validabide="salvarEndereco()">
+            <input type="hidden" ng-model="TipoEndereco" />
+            <input type="hidden" ng-model="IdEndereco" />
+            <div class="row">
+                <div class="small-12 large-2 columns">
+                    <label class="">Tipo:</label>
+                </div>
+                <div class="small-12 large-10 columns">
+                    <select ng-model="TipoEndereco" required="required">
+                        <option selected value="ImvelResidencial">Imóvel Residencial</option>
+                        <option value="ImvelComercial">Imóvel Comercial</option>
+                        <option value="EndereodeCorrespondncia">Endereço de Correspondência</option>
+                        <option value="DomiclioFiscal">Domicílio Fiscal</option>
+                    </select>
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-2 columns">
+                    <label class="">CEP:<span style="color:red;">*</span></label>
+                </div>
+                <div class="small-12 large-3 columns">
+                    <input type="text" ui-mask="99999-999" required="required" ng-model="CEP" ng-blur="carregarCep()" />
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+                <div class="small-12 large-2 small-offset-1 columns">
+                    <label class="">Município:<span style="color:red;">*</span></label>
+                </div>
+                <div class="small-12 large-4 columns">
+                    <input type="text" ng-model="Municipio" required="required" />
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-2 columns">
+                    <label class="">Logradouro:<span style="color:red;">*</span></label>
+                </div>
+                <div class="small-12 large-6 columns">
+                    <input type="text" ng-model="Logradouro" required="required" />
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+                <div class="small-12 large-2 columns">
+                    <label class="">Número:<span style="color:red;">*</span></label>
+                </div>
+                <div class="small-12 large-2 columns">
+                    <input type="text" ng-model="Numero" required="required" />
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-2 columns">
+                    <label class="">Complemento:</label>
+                </div>
+                <div class="small-12 large-4 columns">
+                    <input type="text" ng-model="Complemento" />
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+                <div class="small-12 large-1 columns">
+                    <label class="">Bairro:<span style="color:red;">*</span></label>
+                </div>
+                <div class="small-12 large-5 columns">
+                    <input type="text" ng-model="Bairro" required="required" />
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-2 columns">
+                    <label class="">Referência:<span style="color:red;">*</span></label>
+                </div>
+                <div class="small-12 large-10 columns">
+                    <textarea placeholder="" style="height: 150px;" ng-model="Referencia" required="required"></textarea>
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+            </div>
+
+            <button type="submit" class="button small right">Salvar Endereço</button>
+            <div style="clear:both;"></div>
+        </form>
+    </div>
+</div>

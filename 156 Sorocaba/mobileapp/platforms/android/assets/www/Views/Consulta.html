@@ -1,0 +1,29 @@
+﻿<div style="background-color: #E5E5E5; margin-top: 35px;position: relative;float: left;width: 100%;">
+    <img src="assets/images/close.png" alt="Fechar" tooltip="Fechar" style="position: absolute; right: 10px; top: 5px;z-index: 100;cursor: pointer;" ng-click="fechar()" />
+    <div class="small-12 large-5 columns" style="background-color: #E5E5E5; padding-top: 30px; height: 100%;">
+        <h5 style="padding-left:15px;">Informe com o protocolo:</h5>
+        <form data-abide ng-validabide="Pesquisar()" id="pesquisaForm">
+            <div class="small-12 columns">
+                <input type="text" ng-model="Protocolo" required="required" />
+                <small class="error">O campo é obrigatório.</small>
+            </div>
+            <div class="small-12 columns">
+                <button type="submit" class="button small right">Pesquisar </button>
+            </div>
+        </form>
+    </div>
+    <div class="small-12 large-7 columns" style="min-height: 300px; padding-top:25px; background-color: #ffffff;">
+        <h5>Verifique o status de uma solicitação existente</h5>
+        <p>Você pode verificar o status de sua solicitação usando o seu número de protocolo.</p>
+        <h5>FAQs</h5>
+        <p>
+            <strong>Posso alterar ou cancelar a minha solicitação?</strong><br />
+            Não, uma vez que você enviar a sua solicitação, você não pode alterar ou cancelá-la. Você pode enviar uma nova solicitação com informações atualizadas ou corrigidas.<br />&nbsp;<br />
+            <strong>E se eu receber uma mensagem de solicitação não encontrada?</strong><br />
+            Tente novamente mais tarde. Pode levar várias horas para o seu status ficar disponível. Se você não puder obter o seu status online, ligue para a central 156.<br />&nbsp;<br />
+            <strong>E se eu não estiver satisfeito com o meu status de solicitação ou com a resposta?</strong><br />
+            Você pode entrar em contato com a central 156.<br />
+            Você também pode enviar outra solicitação de serviço.
+        </p>
+    </div>
+</div>

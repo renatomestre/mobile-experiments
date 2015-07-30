@@ -1,0 +1,88 @@
+﻿<div class="row">
+    <ol class="breadcrumb">
+        <li class="on"><a href="" title="Dados do Requerente" class="lnk"><i>1</i> - <em>Dados do Requerente</em></a></li>
+        <li class="on"><a href="" ng-click="irPara('DadosGerais')" title="Dados da Solicitação" class="lnk"><i>2</i> - <em>Dados da Solicitação</em></a></li>
+        <li class="on"><a href="" ng-click="irPara('Localizacao')" title="Dados da Localização" class="lnk"><i>3</i> - <em>Dados da Localização</em></a></li>
+        <li><a href="" title="Revisão" class="lnk"><i>4</i> - <em>Revisão</em></a></li>
+    </ol>
+
+    <div class="small-12 large-12 columns">
+        <div class="wrp">
+            <p class="cabecalhoSolicitacao">ATENÇÃO: O cadastro do requerente será mantido em sigilo pela Central 156. Mas o texto digitado nos "Dados da Solicitação" será enviado na íntegra às Secretarias, ou seja, em caso de denúncia cuidado para não se identificar.</p>
+            <div style="height: 2px; width: 100%; border-bottom: solid 2px #666;"></div>
+            <form data-abide ng-validabide="prosseguir()">
+                <div class="small-10 small-offset-1 large-10 large-offset-1 columns" style="padding-top: 30px;">
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="">Endereços:</label>
+                        </div>
+                        <div class="small-10 columns">
+                            <select ng-model="EnderecoSelecionado" ng-options="item as combined(item) for item in Enderecos" ng-change="CarregarEndereco()">
+                                <option selected value="-1">-- Selecione um endereço já cadastrado ou informe um novo --</option>
+                            </select>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="">CEP:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-3 columns">
+                            <input type="text" ui-mask="99999-999" ng-model="CEP" required="required" ng-blur="carregarCep()" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                        <div class="small-2 small-offset-1 columns">
+                            <label class="">Município:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-4 columns">
+                            <input type="text" ng-model="Municipio" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="">Logradouro:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-7 columns">
+                            <input type="text" ng-model="Logradouro" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                        <div class="small-1 columns">
+                            <label class="">Número:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-2 columns">
+                            <input type="text" ng-model="Numero" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="">Complemento:</label>
+                        </div>
+                        <div class="small-4 columns">
+                            <input type="text" ng-model="Complemento" />
+                        </div>
+                        <div class="small-1 columns">
+                            <label class="">Bairro:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-5 columns">
+                            <input type="text" ng-model="Bairro" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="">Referência:<span style="color:red;">*</span></label>
+                        </div>
+                        <div class="small-10 columns">
+                            <textarea placeholder="" style="height: 150px;" ng-model="Referencia" required="required"></textarea>
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <button type="button" class="button small left secondary" ng-click="voltar()">Voltar </button>
+                    <button type="submit" class="button small right secondary">Prosseguir </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

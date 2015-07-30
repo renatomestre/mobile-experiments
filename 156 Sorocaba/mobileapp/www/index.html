@@ -1,0 +1,210 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br" ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Portal 156 - Prefeitura de Sorocaba</title>
+
+    <!--[if IE lt 9]>
+      <link rel="stylesheet" href="assets/foundation/4/css/foundation.css" />
+    <![endif]-->
+    <!--[if IE gt 8]><!-->
+    <link rel="stylesheet" href="assets/foundation/css/foundation.css" />
+    <!--<![endif]-->
+
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/foundation/css/foundation-icons.css" />
+
+    <link rel="stylesheet" href="assets/style/main.css" />
+    <link rel="stylesheet" href="assets/jquery/pace.css" />
+    <link href="assets/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css' />
+</head>
+<body style="    background-color: rgb(255, 222, 21);">
+
+    <div class="app">
+    
+        <div ng-cloak=ng-cloak>
+            <div class="clearfix" style="position: relative; background-color: #ffde15; width: 100%; padding-top: 5px;">
+                <div class="row">
+                    <div class="small-8 large-3 columns">
+                        <a href="#/" style="border-style: none; outline: none;" hidefocus="true">
+                            <img src="assets/images/logo-156.png" id="logo" alt="Logo" tabindex="1" style="border-style: none;" />
+                        </a>
+                    </div>
+                    <div class="hide-for-small-only large-6 columns text-center">
+                        <h3 style="margin-top: 20px;"><strong>Como podemos ajudar?</strong></h3>
+                    </div>
+                    <div class="small-3 large-3 columns">
+                        <div ng-show="!user.isAuthenticated">
+                            <button class="button login right" style="margin-top: 0px; padding-top: 5px; padding-bottom: 0px;" data-reveal-id="loginModal" ng-click="showLoginModel()">
+                                <h5 class="hide-for-small-only left" style="margin-right: 20px; padding-top: 15px;"><strong>Entrar</strong></h5>
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div ng-show="user.isAuthenticated">
+                            <button data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button login right" style="margin-top: 5px; width: 210px;  padding-bottom: 0px;">
+                                <div class="hide-for-small-only" style="float: left; width: 100px;">
+                                    <h5 class="left" style="margin-right: 20px; margin-bottom: 0px; float: none; width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.8rem;"><strong ng-bind="user.name">Nome</strong></h5>
+                                    <h5 class="left" style="margin-right: 20px; float: none; width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.8rem;" ng-bind="user.cpf | formatCpf">CPF</h5>
+                                </div>
+                                <span class="fa-stack fa-1x" style="float: right; margin-top: 8px;">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </button>
+                            <ul id="drop1" data-dropdown-content=data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+                                <li><a href="#/User"><i class="fi-torso" style="margin-right: 10px"></i>Dados do Usuário</a></li>
+                                <li><a href="#/User/Requests/"><i class="fi-list" style="margin-right: 10px"></i>Minhas Solicitações</a></li>
+                                <li><a href="" ng-click="logout()"><i class="fi-unlock" style="margin-right: 10px"></i>Sair</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div style="position: relative; width: 100%;">
+                <div ui-view autoscroll="true"></div>
+            </div>
+            
+
+        </div>
+        
+        <div id="loginModal" class="reveal-modal signup-panel tiny" data-reveal=data-reveal>
+            <div ng-show="showLogin">
+                <h4>Entrar</h4>
+                <div class="panel">
+                    <form data-abide=data-abide ng-submit="signIn()">
+                        <div class="name-field">
+                            <label>
+                                CPF
+                                <input type="text" ui-mask="999.999.999-99" required=required pattern="cpf" ng-model="username" />
+                            </label>
+                            <small class="error">O CPF é obrigatório e deve ter o formato XXX.XXX.XXX-XX.</small>
+                        </div>
+                        <div class="name-field">
+                            <label>
+                                Senha
+                                <input type="password" required=required ng-model="password" />
+                            </label>
+                            <small class="error">A senha é obrigatória</small>
+                        </div>
+                        <button type="submit" class="button small">Entrar </button>
+                        <br />
+                        <a href="" ng-click="showEsqueciSenhaModel()" class="small-text">Esqueci minha senha</a>
+                    </form>
+                </div>
+                <span class="small-text">Novo?</span><a href="#/Cadastro" class="small-text"> Crie seu cadastro</a>
+                <a class="close-reveal-modal" style="font-size: 1.5rem;">&#215;</a>
+            </div>
+            <div ng-show="!showLogin">
+                <h4>Esqueci Minha Senha</h4>
+                <div class="panel">
+                    <form data-abide=data-abide ng-submit="enviarNovaSenha()">
+                        <div class="name-field">
+                            <label>
+                                CPF
+                                <input type="text" ui-mask="999.999.999-99" required=required pattern="cpf" ng-model="EsqueciMinhaSenha.Cpf" />
+                            </label>
+                            <small class="error">O CPF é obrigatório e deve ter o formato XXX.XXX.XXX-XX.</small>
+                        </div>
+                        <div class="name-field">
+                            <label>
+                                Email
+                                <input type="email" required=required ng-model="EsqueciMinhaSenha.Email" />
+                            </label>
+                            <small class="error">O email é obrigatório</small>
+                        </div>
+                        <button type="submit" class="button small">Enviar nova senha </button>
+                        <br />
+                        <a href="" ng-click="showLoginModel()" class="small-text">Voltar para tela de login</a>
+                    </form>
+                </div>
+                <a class="close-reveal-modal" style="font-size: 1.5rem;">&#215;</a>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+    
+    <script src="assets/ng/angular.min.js"></script>
+    <script src="assets/ng/angular-ui-router.min.js"></script>
+    <script src="assets/ng/angular-cookies.min.js"></script>
+    <script src="assets/ng/ui-utils.min.js"></script>
+    <script src="assets/ng/mm-foundation-tpls-0.5.1.min.js"></script>
+    <script src="assets/ng/sanitize.js"></script>
+
+
+    <!--[if IE lt 9]>
+      <script src="assets/foundation/4/js/vendor/jquery.js"></script>
+    <script src="assets/foundation/4/js/foundation.min.js"></script>
+        <script src="assets/foundation/4/js/foundation.min.js"></script>
+    <![endif]-->
+    <!--[if IE gt 8]><!-->
+    <script src="assets/foundation/js/vendor/jquery.js"></script>
+    <script src="assets/foundation/js/foundation.min.js"></script>
+    <!--<![endif]-->
+    
+
+    <script src="assets/jquery/pace.min.js"></script>
+    <script src="assets/app/app.js"></script>
+    <script src="assets/app/controllers/homeCtrl.js"></script>
+    <script src="assets/app/controllers/abrirReclamacaoCtrl.js"></script>
+    <script src="assets/app/controllers/cadastroCtrl.js"></script>
+    <script src="assets/app/controllers/userCtrl.js"></script>
+    <script src="assets/app/controllers/signInCtrl.js"></script>
+    <script src="assets/foundation/js/vendor/modernizr.js"></script>
+    <script src="assets/misc/respond.min.js"></script>
+
+    <script>
+
+        var agl = {};
+        var ua = navigator.userAgent;
+
+        agl.ISFF = ua.indexOf('Firefox') != -1;
+        agl.ISOPERA = ua.indexOf('Opera') != -1;
+        agl.ISCHROME = ua.indexOf('Chrome') != -1;
+        agl.ISSAFARI = ua.indexOf('Safari') != -1 && !agl.ISCHROME;
+        agl.ISWEBKIT = ua.indexOf('WebKit') != -1;
+
+        agl.ISIE = ua.indexOf('Trident') > 0 || navigator.userAgent.indexOf('MSIE') > 0;
+        agl.ISIE6 = ua.indexOf('MSIE 6') > 0;
+        agl.ISIE7 = ua.indexOf('MSIE 7') > 0;
+        agl.ISIE8 = ua.indexOf('MSIE 8') > 0;
+        agl.ISIE9 = ua.indexOf('MSIE 9') > 0;
+        agl.ISIE10 = ua.indexOf('MSIE 10') > 0;
+        agl.ISOLD = agl.ISIE6 || agl.ISIE7 || agl.ISIE8; // MUST be here
+
+        agl.ISIE11UP = ua.indexOf('MSIE') == -1 && ua.indexOf('Trident') > 0;
+        agl.ISIE10UP = agl.ISIE10 || agl.ISIE11UP;
+        agl.ISIE9UP = agl.ISIE9 || agl.ISIE10UP;
+
+        $(document)
+  .foundation({
+      abide: {
+          patterns: {
+              cpf: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/
+          }
+      }
+  });
+
+
+    </script>
+</body>
+</html>

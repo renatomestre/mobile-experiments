@@ -1,0 +1,97 @@
+﻿<div class="row">
+    <ol class="breadcrumb">
+        <li class="on" style="width: 49%;"><a href="" title="Dados do Requerente" class="lnk"><i>1</i> - <em>Dados Gerais</em></a></li>
+        <li style="width: 49%;"><a href="" title="Dados da Solicitação" class="lnk"><i>2</i> - <em>Endereço</em></a></li>
+    </ol>
+
+    <div class="small-12 large-12 columns">
+        <div class="wrp">
+            <p class="cabecalhoSolicitacao">Para ser cliente (pessoa Física ou Jurídica), é necessário preencher corretamente o formulário abaixo com os respectivos dados cadastrais. Os campos em NEGRITO são de preenchimento obrigatório e essenciais para processarmos suas solicitações.</p>
+            <div style="height: 2px; width: 100%; border-bottom: solid 2px #666;"></div>
+            <form data-abide ng-validabide="prosseguir()" id="dadosGeraisForm">
+                <div class="small-7 small-offset-2 large-7 large-offset-2 columns" style="padding-top: 30px;">
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class=""><strong>CPF:</strong></label>
+                        </div>
+                        <div class="small-4 end columns">
+                            <input type="text" ui-mask="999.999.999-99" ng-model="CPF" required="required" pattern="cpf" ng-blur="carregarCpf()" />
+                            <small class="error">O CPF é obrigatório, deve ser válido e ter o formato XXX.XXX.XXX-XX.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class=""><strong>Nome:</strong></label>
+                        </div>
+                        <div class="small-8 end columns limpaCpf">
+                            <input type="text" ng-model="Nome" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class=""><strong>Sobrenome:</strong></label>
+                        </div>
+                        <div class="small-8 end columns limpaCpf">
+                            <input type="text" ng-model="Sobrenome" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class=""><strong>Email:</strong></label>
+                        </div>
+                        <div class="small-8 end columns limpaCpf">
+                            <input type="email" ng-model="Email" required="required" />
+                            <small class="error">O campo é obrigatório e deve conter um email válido.</small>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class="">Telefone Residencial:</label>
+                        </div>
+                        <div class="small-4 end columns limpaCpf">
+                            <fonenumber-directive model='Telefone.Residencial'></fonenumber-directive>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class="">Telefone Comercial:</label>
+                        </div>
+                        <div class="small-4 end columns limpaCpf">
+                            <fonenumber-directive model='Telefone.Comercial'></fonenumber-directive>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class="">Celular:</label>
+                        </div>
+                        <div class="small-4 end columns limpaCpf">
+                            <fonenumber-directive model='Telefone.Celular'></fonenumber-directive>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class=""><strong>Senha:</strong></label>
+                        </div>
+                        <div class="small-4 end columns">
+                            <input type="password" id="password" pattern="password" ng-model="Senha" required="required" />
+                            <small class="error">O campo é obrigatório e deve ter pelo menos 4 caracteres.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class=""><strong>Confirma Senha:</strong></label>
+                        </div>
+                        <div class="small-4 end columns">
+                            <input type="password" ng-model="ConfirmaSenha" pattern="password" required="required" data-equalto="password" />
+                            <small class="error">O campo é obrigatório e deve ter o conteúdo igual a senha.</small>
+                        </div>
+                    </div>
+                    <br />
+                    <button type="submit" class="button small right secondary">Prosseguir </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

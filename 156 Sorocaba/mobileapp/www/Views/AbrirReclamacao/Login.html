@@ -1,0 +1,76 @@
+﻿<div class="row">
+    <ol class="breadcrumb">
+        <li class="on"><a href="javascript:void(0);" title="Dados do Requerente" class="lnk"><i>1</i> - <em>Dados do Requerente</em></a></li>
+        <li><a href="javascript:void(0);" title="Dados da Solicitação" class="lnk"><i>2</i> - <em>Dados da Solicitação</em></a></li>
+        <li><a href="javascript:void(0);" title="Dados da Localização" class="lnk"><i>3</i> - <em>Dados da Localização</em></a></li>
+        <li><a href="javascript:void(0);" title="Revisão" class="lnk"><i>4</i> - <em>Revisão</em></a></li>
+    </ol>
+
+    <div class="small-12 large-12 columns">
+        <div class="wrp" style="width: 80%;">
+            <div class="small-6 large-6 columns" style="border-right: 1px solid #808b8d; padding-top: 20px;">
+                <div style="width: 70%; margin: auto;">
+                    <h5>Já tenho cadastro</h5>
+                    <form data-abide=data-abide ng-submit="entrar()">
+                        <div class="name-field">
+                            <label>
+                                CPF:
+                                <input type="text" ui-mask="999.999.999-99" required="required" pattern="cpf" ng-model="username" />
+                            </label>
+                            <small class="error">O CPF é obrigatório e deve ter o formato XXX.XXX.XXX-XX.</small>
+                        </div>
+                        <div class="name-field">
+                            <label>
+                                Senha:
+                                <input type="password" required=required ng-model="password" style="margin-bottom: 0px;" />
+                            </label>
+                            <small class="error">A senha é obrigatória</small>
+                            <a href="#" class="small-text">Esqueci minha senha</a>
+                        </div>
+
+                        <br />
+                        <input type="submit" class="button small secondary" value="Prosseguir" />
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="small-6 large-6 columns" style=" padding-top: 20px;">
+                <div style="width: 70%; margin: auto;">
+                    <h5>Não tenho cadastro</h5>
+                    <span style="font-size: 0.9rem;padding-top: 10px;">Criar cadastro</span><br/>
+                    <span style="font-size: 0.7rem; color: #666">Guarde endereços para os próximos pedidos</span><br/>
+                    <form data-abide=data-abide style="padding-top: 10px;" ng-validabide="validarCPFEmail()">
+                        <div class="name-field">
+                            <label>
+                                <input type="text" ui-mask="999.999.999-99" required=required pattern="cpf" ng-model="cpfCadastro" />
+                            </label>
+                            <small class="error">O CPF é obrigatório e deve ter o formato XXX.XXX.XXX-XX.</small>
+                        </div>
+                        <div class="name-field">
+                            <label>
+                                <input type="text" required=required ng-model="email" placeholder="Digite seu email" />
+                            </label>
+                            <small class="error">O email é obrigatório</small>
+                        </div>
+                        <br />
+                        <input type="submit" class="button small secondary" value="Criar Cadastro" />
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        $(document)
+  .foundation({
+      abide: {
+          patterns: {
+              cpf: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/
+          }
+      }
+  });
+</script>

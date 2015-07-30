@@ -1,0 +1,76 @@
+﻿<div class="row">
+    <ol class="breadcrumb">
+        <li style="width: 49%;"><a href="" ng-click="irPara('DadosGerais')" title="Dados Gerais" class="lnk"><i>1</i> - <em>Dados Gerais</em></a></li>
+        <li class="on" style="width: 49%;"><a href="" title="Endereço" class="lnk"><i>2</i> - <em>Endereço</em></a></li>
+    </ol>
+
+    <div class="small-12 large-12 columns">
+        <div class="wrp">
+            <p class="cabecalhoSolicitacao">ATENÇÃO: Os campos em NEGRITO são de preenchimento obrigatório, pois serão utilizados em suas solicitações. </p>
+            <div style="height: 2px; width: 100%; border-bottom: solid 2px #666;"></div>
+            <form data-abide ng-validabide="prosseguir()" id="enderecoForm">
+                <input type="hidden" ng-model="IdEndereco" />
+                <div class="small-10 small-offset-1 large-10 large-offset-1 columns" style="padding-top: 30px;">
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class=""><strong>CEP:</strong></label>
+                        </div>
+                        <div class="small-3 columns">
+                            <input type="text" ui-mask="99999-999" ng-model="CEP" required="required" ng-blur="carregarCep()" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                        <div class="small-2 small-offset-1 columns">
+                            <label class=""><strong>Município:</strong></label>
+                        </div>
+                        <div class="small-4 columns">
+                            <input type="text" ng-model="Municipio" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class=""><strong>Logradouro:</strong></label>
+                        </div>
+                        <div class="small-7 columns">
+                            <input type="text" ng-model="Logradouro" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                        <div class="small-1 columns">
+                            <label class=""><strong>Número:</strong></label>
+                        </div>
+                        <div class="small-2 columns">
+                            <input type="text" ng-model="Numero" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="">Complemento:</label>
+                        </div>
+                        <div class="small-4 columns">
+                            <input type="text" ng-model="Complemento" />
+                        </div>
+                        <div class="small-1 columns">
+                            <label class=""><strong>Bairro:</strong></label>
+                        </div>
+                        <div class="small-5 columns">
+                            <input type="text" ng-model="Bairro" required="required" />
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class=""><strong>Referência:</strong></label>
+                        </div>
+                        <div class="small-10 columns">
+                            <textarea placeholder="" style="height: 150px;" ng-model="Referencia" required="required"></textarea>
+                            <small class="error">O campo é obrigatório.</small>
+                        </div>
+                    </div>
+                    <button type="button" class="button small left secondary" ng-click="voltar()">Voltar </button>
+                    <button type="submit" class="button small right secondary">Prosseguir </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

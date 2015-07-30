@@ -1,0 +1,111 @@
+﻿<div class="row">
+    <ol class="breadcrumb">
+        <li class="on"><a href="" title="Dados do Requerente" class="lnk"><i>1</i> - <em>Dados do Requerente</em></a></li>
+        <li class="on"><a href="" ng-click="irPara('DadosGerais')" title="Dados da Solicitação" class="lnk"><i>2</i> - <em>Dados da Solicitação</em></a></li>
+        <li class="on"><a href="" ng-click="irPara('Localizacao')" title="Dados da Localização" class="lnk"><i>3</i> - <em>Dados da Localização</em></a></li>
+        <li class="on"><a href="" title="Revisão" class="lnk"><i>4</i> - <em>Revisão</em></a></li>
+    </ol>
+
+    <div class="small-12 large-12 columns">
+        <div class="wrp">
+            <p class="cabecalhoSolicitacao">ATENÇÃO: O cadastro do requerente será mantido em sigilo pela Central 156. Mas o texto digitado nos "Dados da Solicitação" será enviado na íntegra às Secretarias, ou seja, em caso de denúncia cuidado para não se identificar.</p>
+            <div style="height: 2px; width: 100%; border-bottom: solid 2px #666;"></div>
+            <form data-abide ng-validabide="prosseguir()">
+                <div class="small-10 small-offset-1 large-10 large-offset-1 columns">
+                    <fieldset>
+                        <legend>Dados Gerais</legend>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right ">Grupo de Serviços:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <label class="left " ng-bind="Solicitacao.GrupoServico.name">---</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right ">Tipo de Serviços:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <label class="left " ng-bind="Solicitacao.TipoServico.name">---</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right ">Assuntos:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <label class="left " ng-bind="Solicitacao.Assunto.name">---</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right ">Descrição Detalhada:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <label class="left " ng-bind="Solicitacao.DescricaoDetalhada">---</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Localização</legend>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right">CEP:</label>
+                            </div>
+                            <div class="small-3 columns">
+                                <label class="left " ng-bind="Solicitacao.Localizacao.CEP">---</label>
+                            </div>
+                            <div class="small-2 columns">
+                                <label class="right">Município:</label>
+                            </div>
+                            <div class="small-4 columns">
+                                <label class="left " ng-bind="Solicitacao.Localizacao.Municipio">---</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right">Logradouro:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <label class="left">{{Solicitacao.Localizacao.Logradouro}}, {{Solicitacao.Localizacao.Numero}}</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 15px;">
+                            <div class="small-3 columns">
+                                <label class="right">Complemento:</label>
+                            </div>
+                            <div class="small-3 columns">
+                                <label class="left ">{{Solicitacao.Localizacao.Complemento | ifnull: '---'}}&nbsp;</label>
+                            </div>
+                            <div class="small-2 columns">
+                                <label class="right">Bairro:</label>
+                            </div>
+                            <div class="small-4 columns">
+                                <label class="left " ng-bind="Solicitacao.Localizacao.Bairro">---</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-3 columns">
+                                <label class="right">Referência:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <label class="left " ng-bind="Solicitacao.Localizacao.Referencia">---</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <div class="row" style="padding-bottom: 15px;">
+                        <h5>Termo de Responsabilidade</h5>
+                        <p>Declaro que li todas as orientações para preenchimento dos campos, estou ciente da responsabilidade que as informações prestadas são verdadeiras e serão repassadas da forma que descrevi, assumindo inteira responsabilidade pelas mesmas.</p>
+                        <input id="checkbox1" type="checkbox" ng-model="TermoDeResponsabilidade" required="required">
+                        <label for="checkbox1">Ciente da responsabilidade</label>
+                    </div>
+                    <br />
+                    <button type="button" class="button small left secondary" ng-click="irPara('Localizacao')">Voltar </button>
+                    <button type="submit" class="button small right secondary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿<div style="background-color: #E5E5E5; margin-top: 35px;position: relative;float: left;width: 100%;">
+    <img src="assets/images/close.png" alt="Fechar" tooltip="Fechar" style="display:none;position: absolute; right: 10px; top: 5px;z-index: 100;cursor: pointer;" ng-click="fechar()" />
+    <div class="small-12 large-4 columns" style="background-color: #E5E5E5; padding-top: 30px; height: 100%;">
+        <div class="small-12 columns">
+            <h5>Abrir solicitação para:</h5>
+
+            <select ng-model="GrupoServicoSelecionado" ng-options="grupo.name for grupo in GruposServico" ng-change="loadTiposServico()">
+                <option value="">Selecione uma opção</option>
+            </select>
+        </div>
+
+        <div class="small-12 columns" ng-show="exibeTiposServico">
+            <h5>Tipo de Serviço:</h5>
+            <select ng-model="TipoServicoSelecionado" ng-options="tipo.name for tipo in TiposServico" ng-change="loadAssuntos()">
+                <option value="">Selecione uma opção</option>
+            </select>
+        </div>
+        <div class="small-12 columns" ng-show="exibeAssuntos">
+            <h5>Assunto:</h5>
+            <select ng-model="AssuntoSelecionado" ng-options="assunto.name for assunto in Assuntos" ng-change="loadArtigo()">
+                <option value="">Selecione uma opção</option>
+            </select>
+        </div>
+    </div>
+    <div class="small-12 large-8 columns text-center" style="background-color: #ffffff;">
+        <div ng-show="!exibeArtigoAssunto" class="visible-for-large-up">
+            <p style="padding-top: 20px;font-size: 0.9rem;">Selecione uma queixa em comum na lista suspensa <br />para a sua reclamação específica.</p>
+            <span style="color: #E5E5E5;font-size: 5rem;font-weight: bold;" class="show-for-large-up">SOROCABA</span>
+            <p style="padding-top: 20px;font-size: 0.9rem;">
+                Você está acessando o canal de comuncação da Prefeitura de Sorocaba com a população.<br />
+                O serviço 156 é administrado pela Secretaria de Planejamento e Gestão.
+            </p>
+        </div>
+        <div ng-show="exibeArtigoAssunto" style="min-height: 300px; text-align: left; padding-top:30px; padding-bottom: 20px;">
+            <div ng-bind-html="TrustArtigo()" class="htmlCRM">&nbsp;</div>
+            <label ng-show="ArtigoUrl"><a ng-href="{{ArtigoUrl}}">{{ArtigoUrl}}</a>.</label>
+            <br />
+            <a href="" ng-click="openRequest()">Abrir Solicitação</a>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>

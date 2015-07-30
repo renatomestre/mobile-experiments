@@ -1,0 +1,38 @@
+﻿<h5 style="font-weight: bold;">Solicitações</h5>
+<div style="background-color: #ffffff; position: relative;float: left;width: 100%;">
+    <div class="small-12 large-12 columns" style="background-color: #ffffff; padding-top: 30px; height: 100%; min-height: 300px;">
+        
+        <table role="grid" class="solicitacoes" style="width:100%;">
+            <thead>
+                <tr>
+                    <th width="150">Protocolo</th>
+                    <th>Assunto</th>
+                    <th class="hide-for-small-only" width="100">Status</th>
+                    <th width="75">Criação</th>
+                    <th class="hide-for-small-only" width="75">Fechamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in ListaDeServicos" ng-click="ExibirSolicitacao(x.numeroProtocolo)">
+                    <td>{{ x.numeroProtocolo }}</td>
+                    <td>{{ x.assunto.name }}</td>
+                    <td class="hide-for-small-only">{{ x.descricaoStatus }}</td>
+                    <td>{{ x.dataCriacao | cmdate:'dd/MM/yyyy' | ifnull: '---' }}</td>
+                    <td class="hide-for-small-only">{{ x.dataFechamento | cmdate:'dd/MM/yyyy' | ifnull: '---' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="clear: both;"></div>
+
+<div id="protocoloNovoModal" class="reveal-modal tiny" data-reveal=data-reveal>
+    <a class="close-reveal-modal" style="font-size: 1.5rem;">&#215;</a>
+    <h4 class="subheader">Solicitação gerada com sucesso!</h4>
+    <div class="callout panel text-center" style="margin-bottom: 5px;">
+        <strong>Protocolo:</strong> {{NumeroProtocoloGerado}}
+    </div>
+    <div class="text-center">
+        <small onclick="$('#protocoloNovoModal').foundation('reveal', 'close');" style="cursor:pointer;">Fechar</small>
+    </div>
+</div>

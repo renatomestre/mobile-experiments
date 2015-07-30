@@ -1,0 +1,241 @@
+﻿<div class="row">
+    <h5>Informações do protocolo {{NumeroProtocolo}}</h5>
+</div>
+<div style="background-color: #ffffff; position: relative;float: left;width: 100%;">
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="row">
+                <div class="small-12 columns request" style="background-color: #ffffff; padding: 0px; height: 100%; min-height: 300px;">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 ng-bind="Ocorrencia.titulo" style="float:left; padding-right: 5px;"></h5><span class="label round" style="margin-top: 5px;" ng-bind="Ocorrencia.descricaoStatus">---</span>
+                            <div class="ibox-tools">
+                                <label class="right">Data da criação: {{Ocorrencia.dataCriacao | cmdate:'dd/MM/yyyy'}}</label>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <h3 class="list-group-item-heading">Dados gerais</h3>
+
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 large-2 columns">
+                                            <label>Protocolo:</label>
+                                        </div>
+                                        <div class="small-12 large-10 columns">
+                                            <label ng-bind="NumeroProtocolo"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 large-2 columns columns">
+                                            <label>Assunto:</label>
+                                        </div>
+                                        <div class="small-12 large-10 columns">
+                                            <label>{{Ocorrencia.grupoDeServico.name}} / {{Ocorrencia.tipoDeServico.name}} / {{Ocorrencia.assunto.name}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 large-2 columns columns">
+                                            <label>Descrição:</label>
+                                        </div>
+                                        <div class="small-12 large-10 columns">
+                                            <label>{{Ocorrencia.descricaoDetalhada}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <h3 class="list-group-item-heading">Endereço</h3>
+
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 columns">
+                                            <label>{{ Ocorrencia.address.street }}, {{ Ocorrencia.address.number }} / {{ Ocorrencia.address.additionalInformation | ifnull: '---' }} - {{ Ocorrencia.address.postalCode }} - {{ Ocorrencia.address.district }} - {{ Ocorrencia.address.city }} /{{ Ocorrencia.address.state }} </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <h3 class="list-group-item-heading">Resolução</h3>
+
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 large-2 columns columns">
+                                            <label>Data:</label>
+                                        </div>
+                                        <div class="small-12 large-10 columns">
+                                            <label>{{Ocorrencia.dataResolucao | cmdate:'dd/MM/yyyy hh:mm'}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 large-2 columns columns">
+                                            <label>Resolução:</label>
+                                        </div>
+                                        <div class="small-12 large-10 columns">
+                                            <label>{{Ocorrencia.resolucao}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="small-12 large-2 columns columns">
+                                            <label>Descrição:</label>
+                                        </div>
+                                        <div class="small-12 large-10 columns">
+                                            <label>{{Ocorrencia.descricaoResolucao}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <h3 class="list-group-item-heading">Histórico da solicitação</h3>
+
+                                    <div class="row">
+                                        <div class="small-12 columns">
+                                            <div class="ibox-content inspinia-timeline" style="border:none;">
+
+                                                <div class="timeline-item" ng-repeat="x in Ocorrencia.etapas">
+                                                    <div class="row">
+                                                        <div class="small-3 columns date">
+                                                            <i class="fi-calendar"></i>
+                                                            <span style="font-size: 13px;">{{x.criadoEm | cmdate:'dd/MM/yyyy hh:mm'}}</span>
+                                                            <br>
+                                                            <small class="text-navy">{{x.nomeRazaoStatus}}</small>
+                                                        </div>
+                                                        <div class="small-9 columns content">
+                                                            <p class="m-b-xs"><strong>{{x.nome}}</strong></p>
+
+                                                            <div ng-show="PermiteAlterar" ng-repeat="y in x.comuniquese" style="padding: 10px; margin-bottom:15px; background-color: #f5f5f5;">
+                                                                <div class="row" style="padding-bottom: 10px;">
+                                                                    <div class="small-12 columns">
+                                                                        <p style="font-size: 0.8rem;"><b>Comunique-se</b></p>
+                                                                        <label>{{y.requisicao}} </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="padding-bottom: 10px;">
+                                                                    <div class="small-6 columns">
+                                                                        <i class="fi-clock"></i>
+                                                                        <small>Criado em {{y.criadoEm | cmdate:'dd/MM/yyyy hh:mm'}} </small>
+                                                                    </div>
+                                                                    <div class="small-6 columns">
+                                                                        <small>{{y.razaoStatus}} </small>&nbsp;
+                                                                        <i class="fi-page-edit" style="cursor:pointer;" title="Responder" ng-click="showComuniquese(y)" data-reveal-id="comuniqueseModal" ng-if="y.razaoStatus == 'Aberto'"></i>
+                                                                        <i class="fi-magnifying-glass" style="cursor:pointer;" title="Consultar" ng-click="showConsultaComuniquese(y)" data-reveal-id="consultaComuniqueseModal" ng-if="y.razaoStatus != 'Aberto'"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-10 small-offset-1 columns" style="background-color: #ffffff;">
+                            <button type="button" class="button tiny right secondary" ng-click="Voltar()">
+                                <i class="fi-list"></i>
+                                Voltar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+
+<div id="comuniqueseModal" class="reveal-modal  medium" data-reveal=data-reveal>
+    <a class="close-reveal-modal" style="font-size: 1.5rem;">&#215;</a>
+    <h4>Comunique-se</h4>
+    <div class="panel">
+        <form data-abide enctype="multipart/form-data" ng-validabide="salvarComuniquese()">
+            <input type="hidden" ng-model="Comuniquese.Id" />
+            <div class="row">
+                <div class="small-6 columns">
+                    <small>Criado em {{Comuniquese.CriadoEm | cmdate:'dd/MM/yyyy hh:mm'}}</small>
+                </div>
+                <div class="small-6 columns end">
+                    <small class="right">{{Comuniquese.RazaoStatus}}</small>
+                </div>
+            </div>
+            <div class="row" style="padding-top:20px;">
+                <div class="small-12 columns">
+                    <p ng-bind="Comuniquese.Requisicao"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <label class="">Resposta:</label>
+                    <textarea placeholder="" style="height: 150px;" ng-model="Comuniquese.Resposta" required="required"></textarea>
+                    <small class="error">O campo é obrigatório.</small>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <div class="left" style="width: 100px;">
+                        <i class="fi-paperclip left" style="font-size: 18px;" title="Anexos"></i>
+                        <label class="">Anexo(s):</label>
+                    </div>
+                    <input type="file" file-upload multiple />
+                </div>
+            </div>
+            <div class="row fileRow" ng-repeat="y in Comuniquese.Anexos">
+                <div class="small-11 columns">
+                    {{y.name}}
+                </div>
+                <div class="small-1 columns">
+                    <i class="fi-trash" style="cursor:pointer;" title="Remover" ng-click="removerAnexo($index)"></i>
+                </div>
+            </div>
+            <button type="submit" class="button small right">Enviar</button>
+            <div style="clear:both;"></div>
+        </form>
+    </div>
+</div>
+
+<div id="consultaComuniqueseModal" class="reveal-modal signup-panel medium" data-reveal=data-reveal>
+    <a class="close-reveal-modal" style="font-size: 1.5rem;">&#215;</a>
+    <h4>Comunique-se</h4>
+    <div class="panel">
+        <form data-abide=data-abide ng-submit="salvarComuniquese()">
+            <input type="hidden" ng-model="Comuniquese.Id" />
+            <div class="row">
+                <div class="small-6 columns">
+                    <small>Criado em {{Comuniquese.CriadoEm | cmdate:'dd/MM/yyyy hh:mm'}}</small>
+                </div>
+                <div class="small-6 columns end">
+                    <small class="right">{{Comuniquese.RazaoStatus}}</small>
+                </div>
+            </div>
+            <div class="row" style="padding-top:20px;">
+                <div class="small-12 columns">
+                    <p ng-bind="Comuniquese.Requisicao"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <label class="">Resposta:</label>
+                    <textarea readonly="readonly" disabled="disabled" placeholder="" style="height: 150px;" ng-model="Comuniquese.Resposta"></textarea>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <i class="fi-paperclip left" style="font-size: 18px;" title="Anexos"></i>
+                    <label class="">Anexo(s):</label>
+                </div>
+
+            </div>
+            <div class="row fileRow" ng-repeat="y in Comuniquese.Anexos">
+                <div class="small-12 columns">
+                    <a href="http://www.sorocaba.sp.gov.br/156sorocaba/api/Request/getfile?id={{y.id}}"><small>{{y.nome}}</small></a>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </form>
+    </div>
+</div>

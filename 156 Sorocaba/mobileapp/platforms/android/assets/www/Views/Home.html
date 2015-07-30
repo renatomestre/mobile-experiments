@@ -1,0 +1,13 @@
+﻿<div class="clearfix" style="position: relative; background-color: #ffde15; width: 100%; padding-bottom: 40px;">
+    <div class="row">
+        <div class="small-12 large-3 columns sidebar" id="menu">
+            <h5 style="margin-left: 20px;">COMEÇE AQUI</h5>
+            <div style="width: 100%;">
+                <a href="#/Home/Solicitacao" class="button">Serviços 156 <i class="fi-play" style="float: right;font-size: 0.7rem;margin-top: 4px;"></i></a>
+                <a href="#/Home/Consulta" class="button">Consultas <i class="fi-play" style="float: right;font-size: 0.7rem;margin-top: 4px;"></i></a>
+                <a ng-show="user.isAuthenticated" href="#/User/Requests/" class="button">Minhas Solicitações <i class="fi-play" style="float: right;font-size: 0.7rem;margin-top: 4px;"></i></a>
+            </div>
+        </div>
+        <div ui-view class="small-12 large-9 columns"></div>
+    </div>
+</div>
